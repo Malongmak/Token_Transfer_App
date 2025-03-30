@@ -1,82 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Token Transfer DApp</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="app-header" role="banner">
-      <h1 id="app-title">Token_Transfer_DApp</h1>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wildlife Conservation Donation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Wildlife Conservation Fund</h1>
+    <p>Protecting endangered species through blockchain technology</p>
+  </header>
 
-    <main class="dashboard" role="main">
-      <section aria-labelledby="wallet-section" class="wallet-info">
-        <!-- <h2 id="wallet-section">Wallet Details</h2> -->
-        <button id="connectBtn" class="button" aria-label="Connect Wallet or Copy Address">
-            Connect Wallet
-            <span id="copyIcon" title="Copy Address" style="display: none; margin-left: 10px; cursor: pointer;">📋</span>
-          </button>
-        <p><strong style="display: none;">Account:</strong> <span id="account" style="display: none;">Not Connected</span></p>
-        <p><strong>Balance:</strong> <span id="balance">0.00</span> MTK</p>
-      </section>
-      <hr class="divider" />
-      <section aria-labelledby="transfer-section" class="transfer-form">
-        <h2 id="transfer-section">Transfer Tokens</h2>
-        <form id="transferForm" aria-describedby="form-instructions">
-          <!-- <p id="form-instructions">
-            Fill out the recipient's address and token amount to transfer.
-          </p> -->
-          <label for="toAddress">Recipient Address</label>
-          <input
-            type="text"
-            id="toAddress"
-            name="toAddress"
-            required
-            placeholder="0x..."
-            aria-required="true"
-          />
+  <main class="dashboard">
+    <section class="wallet-info">
+      <button id="connectBtn" class="button">
+        Connect Wallet
+      </button>
+      <div class="balance-info">
+        <span>ETH Balance:</span>
+        <span id="balance">0.00</span>
+      </div>
+    </section>
 
-          <label for="amount">Amount</label>
-          <input
-            type="number"
-            id="amount"
-            name="amount"
-            required
-            placeholder="0"
-            aria-required="true"
-          />
+    <section class="donate-form">
+      <h2>Make a Donation</h2>
+      <p>Your contribution helps protect endangered species and their habitats</p>
+      <form id="donateForm">
+        <div class="form-group">
+          <label for="donationAmount">ETH Amount</label>
+          <input type="number" id="donationAmount" min="0.01" step="0.01" placeholder="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="projectSelect">Select Project</label>
+          <select id="projectSelect">
+            <option value="general">General Conservation Fund</option>
+            <option value="tigers">Save the Tigers</option>
+            <option value="oceans">Ocean Cleanup Initiative</option>
+            <option value="forests">Rainforest Protection</option>
+          </select>
+        </div>
+        <button type="submit" class="button donate-button">Donate Now</button>
+      </form>
+      <div id="donationStatus"></div>
+    </section>
 
-          <button type="submit" class="button" id="transferBtn">
-            Transfer
-          </button>
-        </form>
-        <div id="status" role="status" aria-live="polite"></div>
-      </section>
-      <hr class="divider" />
+    <section class="transaction-history">
+      <h2>Your Conservation Impact</h2>
+      <div id="impactStats">
+        <div class="stat-card">
+          <h3>Total Donated</h3>
+          <p id="totalDonated">0 ETH</p>
+        </div>
+        <div class="stat-card">
+          <h3>Species Protected</h3>
+          <p id="speciesProtected">0</p>
+        </div>
+      </div>
+      <h3>Donation History</h3>
+      <ul id="txHistory"></ul>
+    </section>
+  </main>
 
-      <section aria-labelledby="history-section" class="transaction-history">
-        <h2 id="history-section">Transaction History</h2>
-        <ul id="txHistory" class="history-list"></ul>
-      </section>
-    </main>
+  <footer>
+    <p>© 2024 Wildlife Conservation Fund. All donations are tax-deductible.</p>
+  </footer>
 
-    <footer role="contentinfo">
-      <p>&copy; 03/22/2025 Maker's Token_Transfer_DApp. All rights reserved.</p>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-    <script src="app.js"></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.7.0/dist/ethers.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
